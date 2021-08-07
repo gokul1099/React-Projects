@@ -1,0 +1,76 @@
+.selected{
+    color: #fff;
+    background-color:black;
+}
+.date-view{
+    margin-top:10px;
+    width: 100px;
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+        align-items: left;
+    
+}
+.month-view{
+    padding: 10px;
+    margin-left: 50px;
+    width: 100%;
+    align-items: center;
+    
+    
+} 
+.theme{
+    justify-content: center;
+    border: 2px solid white;
+    border-radius:10px;
+    background-color: black;
+    color:white;
+}
+.date-view-item{
+    
+    text-align: center;
+}
+.sidebar{
+    margin-left:50px;
+    width:50px;
+    height:500px;
+}
+.empty-div{
+    margin-bottom: 20px;
+}
+.hour-view{
+    display: flex;
+    flex-direction:column;
+    height:50px;
+
+}
+.hour-view-hour{
+    width:50px;
+    border-right: 1px solid black;
+}
+.hour-view-line-inner{
+    border-bottom: 1px solid black;
+    }
+.hour-view-container{
+    max-height: 500px;
+        height:500px;
+        width:100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+  
+.view-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+}.year-view{
+    border:2px solid black;
+    margin:10px;
+    padding:10px; 
+}
+
+.each-month{
+    display: flex;
+    flex-direction: row;
+}

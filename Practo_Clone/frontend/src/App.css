@@ -1,0 +1,50 @@
+.row-container {
+  margin: 20px;
+}
+
+.logo-image {
+  height: 25px;
+  width: auto;
+}
+.login-btn {
+  border: 1px solid #dde2de;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 15px;
+  color: #a7b5ab;
+  background-color: white;
+}
+.login-btn :hover {
+  color: skyblue;
+  opacity: 1;
+}
+h5 {
+  font-size: 10px;
+  color: black;
+  text-decoration: none;
+  margin: 0;
+}
+h6 {
+  font-size: 8px;
+  color: gray;
+  text-decoration: none;
+  margin: 0;
+}
+.active-tab {
+  border-bottom: 3px solid rgb(20, 190, 240);
+}
+.join-practa {
+  font-size: 1px;
+}
+/* .input-border:focus {
+  border: 1px solid #dde2de;
+  border-left: 'none';
+  box-shadow: 'none';
+} */
+:focus {
+  outline: 0 !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+.error{
+  border: 2px solid #FF6565;
+}
