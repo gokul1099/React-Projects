@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Button, Form, FormGroup, Label, Input, } from 'reactstrap';
-import { signup } from "../../actions/auth"
+import { signin } from "../../actions/auth"
 
-const SignupComponent = () => {
+const SigninComponent = () => {
     const [values, setValues] = useState({
         name: "",
         email: "",
@@ -47,13 +47,9 @@ const SignupComponent = () => {
                 }
             })
     }
-    const signupForm = () => (
+    const signinForm = () => (
         <div>
             <Form>
-                <FormGroup>
-                    <Label for="exampleName">Name</Label>
-                    <Input type="name" name="name" id="exampleName" value={name} onChange={handleChange} placeholder="Type your name here" />
-                </FormGroup>
                 <FormGroup>
                     <Label for="exampleEmail">Email</Label>
                     <Input type="email" name="email" id="exampleEmail" value={email} onChange={handleChange} placeholder="Type your email here" />
@@ -64,7 +60,7 @@ const SignupComponent = () => {
                 </FormGroup>
 
             </Form>
-            <Button className="mt-3" color="primary" onClick={onSubmit}>Sign Up</Button>
+            <Button className="mt-3" color="primary" onClick={onSubmit}>Sign In</Button>
         </div>
     )
     return (
@@ -72,9 +68,9 @@ const SignupComponent = () => {
             {showError()}
             {showLoading()}
             {showMessage()}
-            {showForm && signupForm()}
+            {showForm && signinForm()}
         </div>
     )
 }
 
-export default SignupComponent
+export default SigninComponent
