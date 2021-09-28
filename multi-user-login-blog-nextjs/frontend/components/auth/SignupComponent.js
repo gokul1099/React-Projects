@@ -1,6 +1,7 @@
-import { useState } from "react"
+import Router from "next/router";
+import { useState, useEffect } from "react"
 import { Button, Form, FormGroup, Label, Input, } from 'reactstrap';
-import { signup } from "../../actions/auth"
+import { signup, isAuth } from "../../actions/auth"
 
 const SignupComponent = () => {
     const [values, setValues] = useState({
@@ -20,7 +21,11 @@ const SignupComponent = () => {
         })
     }
     const { name, email, password, error, loading, message, showForm } = values
-
+    useEffect(() => {
+        if (isAuth) {
+            Router.push("/")
+        }
+    }, [])
 
     const showLoading = () => {
         loading ? <div className="alert alert-info">Loading...</div> : ""
@@ -43,6 +48,7 @@ const SignupComponent = () => {
                 if (data.error) {
                     setValues({ ...values, error: data.error, loading: false })
                 } else {
+
                     setValues({ ...values, name: "", email: "", password: "", error: "", loading: false, message: data.message, showForm: false })
                 }
             })

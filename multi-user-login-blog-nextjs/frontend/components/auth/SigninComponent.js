@@ -1,10 +1,12 @@
-import { useState } from "react"
+import Router from "next/router";
+import { useState, useEffect } from "react"
 import { Button, Form, FormGroup, Label, Input, } from 'reactstrap';
-import { signin } from "../../actions/auth"
+import { signin, authenticate, isAuth } from "../../actions/auth"
+
+
 
 const SigninComponent = () => {
     const [values, setValues] = useState({
-        name: "",
         email: "",
         password: "",
         error: "",
@@ -19,31 +21,36 @@ const SigninComponent = () => {
 
         })
     }
-    const { name, email, password, error, loading, message, showForm } = values
+    const { email, password, error, loading, message, showForm } = values
+    useEffect(() => {
+        if (isAuth()) {
+            Router.push("/")
+        }
+    }, [])
 
-
-    const showLoading = () => {
+    const showLoading = () => (
         loading ? <div className="alert alert-info">Loading...</div> : ""
-    }
-    const showError = () => {
+    )
+    const showError = () => (
         error ? <div className="alert alert-danger">{error}</div> : ""
-    }
-    const showMessage = () => {
+    )
+    const showMessage = () => (
         message ? (<div className="alert alert-info">{message}</div>) : ""
-    }
-
+    )
 
     const onSubmit = (e) => {
         e.preventDefault();
         setValues({ ...values, loading: true, error: false })
-        const user = { name, email, password }
-        signup(user)
+        const user = { email, password }
+        signin(user)
             .then(data => {
-                console.log(data)
                 if (data.error) {
                     setValues({ ...values, error: data.error, loading: false })
                 } else {
-                    setValues({ ...values, name: "", email: "", password: "", error: "", loading: false, message: data.message, showForm: false })
+                    authenticate(data, () => {
+                        Router.push("/")
+                    })
+                    setValues({ ...values, email: "", password: "", error: "", loading: false, message: data.message, showForm: false })
                 }
             })
     }
