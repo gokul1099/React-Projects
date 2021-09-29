@@ -34,10 +34,32 @@ const Header = () => {
                                 </Link>
                             </NavItem>
                         </>)}
+                        {isAuth() && isAuth().role === 0 &&
+                            (<>
+                                <NavItem>
+                                    <Link href="/user">
+                                        <NavLink style={{ "cursor": "pointer" }}>{`${isAuth().name}'s Dashboard`}</NavLink>
+                                    </Link>
+                                </NavItem>
+                            </>)
+                        }
+                        {isAuth() && isAuth().role === 1 &&
+                            (<>
+                                <NavItem>
+                                    <Link href="/admin">
+                                        <NavLink style={{ "cursor": "pointer" }}>{`${isAuth().name}'s Dashboard`}</NavLink>
+                                    </Link>
+                                </NavItem>
+                            </>)
+                        }
                         {
-                            isAuth() && (<NavItem>
-                                <NavLink style={{ "cursor": "pointer" }} onClick={() => signout(() => Router.replace("/signin"))}>SignOut</NavLink>
-                            </NavItem>)
+                            isAuth() && (
+                                <>
+                                    <NavItem>
+                                        <NavLink style={{ "cursor": "pointer" }} onClick={() => signout(() => Router.replace("/signin"))}>SignOut</NavLink>
+                                    </NavItem>
+                                </>
+                            )
                         }
                     </Nav>
                 </Collapse>
