@@ -4,9 +4,18 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } f
 import Link from "next/link"
 import { signout, isAuth } from "../actions/auth"
 import Router from 'next/router';
+import NProgress from 'nprogress';
 
+Router.onRouteChangeStart = (url) => {
+    NProgress.start()
+}
 
-
+Router.onRouteChangeComplete = (url) => {
+    NProgress.done()
+}
+Router.onRouteChangeError = (err) => {
+    NProgress.done()
+}
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => {
